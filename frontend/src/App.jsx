@@ -1,16 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useState } from 'react'
+import Inicial from './components/inicial/inicial'
 import './App.css'
-import Home from './components/home/home'
-import Admin from './components/admin/admin'
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
-    </Router>
+    <div>
+      <section className='flex h-screen items-center justify-center'>
+          <Inicial />
+      </section>
+      <section className='h-screen flex'>
+          
+      </section>
+    </div>
   )
 }
 
