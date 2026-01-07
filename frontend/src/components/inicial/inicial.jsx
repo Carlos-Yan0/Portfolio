@@ -1,6 +1,6 @@
 import './inicial.css'
 function Inicial(){
-    const btn = "bg-gray-900/40 hover:bg-gray-800/60 backdrop-blur-md border border-white/10 px-8 py-3 rounded-2xl shadow-xl transition-all duration-300 ring-1 ring-inset ring-white/20 h-12 gap-4 "
+    const btn = "bg-gray-900/40 hover:bg-gray-800/60 hover:cursor-pointer backdrop-blur-md border border-white/10 px-8 py-3 rounded-2xl shadow-xl transition-all duration-300 ring-1 ring-inset ring-white/20 h-12 gap-4 w-19"
     return(
         <div>
             <div className="flex-col flex w-50 md:w-98">
