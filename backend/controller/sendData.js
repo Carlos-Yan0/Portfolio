@@ -1,34 +1,32 @@
 const About = require('../models/about');
 const Projects = require('../models/projects');
 
-exports.enviarAbout = async (req, res) => {
+exports.enviarInfo = async (req, res) => {
     try{
         const about = await About.find();
-        res.status(200).json(about);
-    }catch (error){
-        res.status(500).json({ message: "erro ao buscar about:", error });
+        const projects = await Projects.find();
+
+        res.status(200).json({
+            about,
+            projects,
+        }
+        );
+
+    } catch(error){
+        res.status(500).json({ message: "erro ao buscar dados", error });
     }
-};
+}
 
 exports.modificarAbout = async (req, res) => {
     try{
         const {id} = req.params;
-        const aboutAtualizado = About.findByIdAndUpdate(id, req.body, {new: true,});
+        const aboutAtualizado = await About.findByIdAndUpdate(id, req.body, {new: true,});
         if(!aboutAtualizado){
             return res.status(404).json({ message: "About nao encontrado" });
         }
         res.status(201).json({ message: "About atualizado" });
     }catch(error){
         res.status(400).json({ message: "falha ao atualizar o about: ", error });
-    }
-};
-
-exports.enviarProjects = async (req, res) => {
-    try{
-        const projects = await Projects.find();
-        res.status(200).json(projects);
-    }catch (error){
-        res.status(500).json({ message: "Erro ao buscar projetos" });
     }
 };
 
@@ -45,12 +43,26 @@ exports.criarProjects = async (req, res) => {
 exports.modificarProjects = async (req, res) => {
     try{
         const {id} = req.params;
-        const projectAtualizado = Projects.findByIdAndUpdate(id, req.body, {new: true,});
+        const projectAtualizado = await Projects.findByIdAndUpdate(id, req.body, {new: true,});
         if(!projectAtualizado){
             return res.status(404).json({ message: "nenhum projeto encontrado" });
         }
         res.status(200).json({ message: "Projeto atualizado" });
     } catch(error) {
         res.status(400).json({ message: "falha ao atualizar o projeto" });
+    }
+};
+
+exports.deleteProjects = async (req, res) => {
+    try{
+        const {id} = req.params;
+        const projectDeletado = await Projects.findByIdAndDelete(id);
+        if(!projectDeletado){
+            return res.status(404).json({ message: "Projeto nao encontrado" });
+        }
+        res.status(200).json({ message: "Projeto deletado" });
+
+    }catch (error) {
+        res.status(500).json({ message: "Falha ao deletar projeto" });
     }
 };
