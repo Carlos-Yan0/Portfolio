@@ -7,7 +7,7 @@ const projectsSchema = new mongoose.Schema({
         trim: true,
     },
     stack: {
-        type: [String],
+        type: String,
         required: true,
     },
     description: {

@@ -7,8 +7,8 @@ const aboutSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
-    skills: {
-        type: [String],
+    stack: {
+        type: String,
         required: true,
     },
 });
