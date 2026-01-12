@@ -1,5 +1,5 @@
 import Inicial from '../inicial/inicial'
-
+import About from '../about/about'
 function Home() {
   return (
     <div>
@@ -7,7 +7,7 @@ function Home() {
           <Inicial />
       </section>
       <section className='h-screen flex'>
-          
+        <About />
       </section>
     </div>
   )
