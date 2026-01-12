@@ -28,9 +28,12 @@ function ProjectCard(props){
 
                 <div className="text-sm flex flex-col">
                     Clique para saber mais
-                    <div className='w-full flex justify-center'>
+                    <div className='w-full flex justify-center gap-2'>
                         {isAdmin && (
+                            <>
                         <button className='hover:bg-white/70 transition w-fit cursor-pointer' onClick={deletarEAtualizar}>Deletar</button>
+                        <button className='hover:bg-white/70 transition w-fit cursor-pointer' onClick={() => props.setId(props.id)}>Modificar</button>
+                        </>
                     )}
                     </div>
                     
